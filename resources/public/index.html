@@ -9,7 +9,7 @@
         <div id="counter"></div>
 
         <div id="container">
-        	<canvas id="target"></canvas>
+        	<canvas width="1800" height="1500" id="target"></canvas>
 					<div id="tooltip"></div>
         </div>
 
@@ -19,9 +19,10 @@
         <script src="libs/d3-3d.js"></script>
         <script src="libs/stats.min.js"></script>
 
-	<!-- 				dev  -->
+	<!-- 				dev  
 
 			  <script type='text/javascript' id='lt_ws' src='http://localhost:5678/socket.io/lighttable/ws.js'></script>
+              -->
 
         <script src="js/compiled/gravity.js" type="text/javascript"></script>
         <script>
@@ -45,12 +46,14 @@
                      }
                 });
 
-//                 gg.on("ready", function(){
-//                     var graph = gravity.demo.get_demo_graph();
-//                     gg.nodes(graph.nodes);
-//                     gg.links(graph.links);
-//                     //gg.updateForce();
-//                 });
+                 gg.on("ready", function(){
+                     d3.json("statistics.json", function(error, graph){
+                         gg.nodes(graph.nodes);
+                         gg.links(graph.links);
+                         gg.updateForce()
+                     });
+                     //gg.updateForce();
+                 });
 
 								if(gg.stats){
 									document.body.appendChild(gg.stats.domElement);

@@ -30,3 +30,4 @@ pom.xml
 .nrepl-port
 project.sublime-workspace
 project.sublime-project
+resources/public/statistics.json
